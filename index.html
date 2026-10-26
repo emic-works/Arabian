@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img{max-width:100%}</style>
+<title>Arabian Days Styling Boards</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: deck-style boards, one per character — notes column left, 2x2 contact sheet right. Single light look matching the brand deck. */
+:root{
+  --blush:#FBEDEB; --paper:#FFFDFB; --ink:#1B1712; --muted:#6B5F57; --line:#E8D9D4;
+  --orange:#F27405; --olive:#4B5E2B; --magenta:#D10FA0; --blue:#1767B8;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Work Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{text-wrap:balance;margin:0}
+.hero{padding-block:48px 24px}
+.hero .card{background:var(--blush);border-radius:40px;padding:clamp(24px,5vw,56px);display:grid;gap:28px;grid-template-columns:1.4fr 1fr;align-items:end}
+.eyebrow{font-family:var(--display);font-weight:800;font-stretch:125%;letter-spacing:.22em;text-transform:uppercase;color:var(--olive);font-size:13px}
+h1{font-family:var(--display);font-weight:900;font-stretch:112%;text-transform:uppercase;color:var(--orange);font-size:clamp(40px,7vw,84px);line-height:.92;margin-top:12px;text-shadow:3px 3px 0 var(--ink)}
+.hero p{max-width:60ch;color:var(--muted);margin:14px 0 0}
+.meta{display:grid;gap:10px;font-size:13px}
+.meta div{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:8px}
+.meta b{font-weight:600}
+.meta span{color:var(--muted);text-align:right}
+.grade{padding-block:16px 8px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.grade .g{border-top:2px solid var(--ink);padding-top:12px}
+.grade h3{font-family:var(--display);font-weight:800;font-stretch:115%;text-transform:uppercase;letter-spacing:.06em;font-size:14px}
+.grade p{margin:6px 0 10px;color:var(--muted);font-size:14px}
+.sw{display:flex;gap:6px}
+.sw i{width:28px;height:28px;border-radius:50%;display:block;border:1px solid rgba(0,0,0,.08)}
+nav.jump{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--line);margin-top:28px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+nav.jump .wrap{display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+nav.jump a{flex:none;font-size:12px;font-weight:600;text-decoration:none;color:var(--ink);padding:6px 12px;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
+nav.jump a:hover,nav.jump a:focus-visible{background:var(--ink);color:var(--paper);outline:none}
+.char{padding-block:56px;border-bottom:1px solid var(--line);scroll-margin-top:60px}
+.ch{display:flex;gap:18px;align-items:baseline;margin-bottom:24px}
+.idx{font-family:var(--mono);color:var(--orange);font-size:14px}
+h2{font-family:var(--display);font-weight:800;font-stretch:118%;letter-spacing:.08em;text-transform:uppercase;font-size:clamp(22px,3.4vw,34px)}
+.tag{margin:2px 0 0;color:var(--muted);font-style:italic}
+.body{display:grid;grid-template-columns:300px 1fr;gap:32px;align-items:start}
+.notes{display:grid;gap:20px;min-width:0}
+.blk h4{font-family:var(--display);font-weight:800;font-stretch:125%;letter-spacing:.24em;text-transform:uppercase;font-size:11px;margin-bottom:8px}
+.c-ward{color:var(--olive)} .c-loc{color:var(--magenta)} .c-prop{color:var(--orange)} .c-cast{color:var(--blue)}
+.blk ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:14px}
+.blk p{margin:0;font-size:14px}
+ul.chips{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+ul.chips li{font-size:12.5px;background:var(--blush);padding:4px 10px;border-radius:999px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;min-width:0}
+figure{margin:0;display:grid;gap:6px;min-width:0}
+figure img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;background:var(--blush);border-radius:4px}
+figcaption{font-size:12px;color:var(--muted);line-height:1.35}
+figcaption span{font-family:var(--mono);color:var(--ink)}
+footer{padding-block:40px 64px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:960px){.body{grid-template-columns:1fr}.hero .card{grid-template-columns:1fr}}
+@media (max-width:560px){.grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+
+</head>
+<body>
+<header class="hero"><div class="wrap"><div class="card">
+<div><div class="eyebrow">Marketing campaign · Wardrobe</div>
+<h1>Styling<br>Mood Boards</h1>
+<p>Thirteen ambassador boards for the Arabian Days main shoot. Each board pairs the wardrobe call with the locations and props from the visual direction, and four Soul 2.0 references graded to the 60s–80s brand look.</p></div>
+<div class="meta">
+<div><b>Direction</b><span>Authentic, candid, modern heritage</span></div>
+<div><b>City</b><span>Abu Dhabi</span></div>
+<div><b>References</b><span>52 frames · Higgsfield Soul 2.0</span></div>
+<div><b>Prepared</b><span>26 Oct 2026</span></div>
+</div></div></div></header>
+
+<div class="wrap grade">
+<div class="g"><h3>Nostalgic</h3><p>Soft contrast, natural light, slight grain. Warm and authentic.</p><div class="sw"><i style="background:#9DB7CF"></i><i style="background:#E9B7B5"></i><i style="background:#A8B68E"></i><i style="background:#D8A93E"></i></div></div>
+<div class="g"><h3>Bold</h3><p>Higher contrast, flash or practical light, saturated era colour.</p><div class="sw"><i style="background:#E0701E"></i><i style="background:#7A4A2B"></i><i style="background:#B8312A"></i><i style="background:#6B7A2C"></i></div></div>
+<div class="g"><h3>Neon accents</h3><p>Used sparingly at night and in flash frames for play.</p><div class="sw"><i style="background:#1F6FFF"></i><i style="background:#FF2DA0"></i><i style="background:#7B3FD1"></i><i style="background:#FFE11A"></i></div></div>
+</div>
+
+<nav class="jump" aria-label="Characters"><div class="wrap"><a href="#nasser">Nasser Nayef</a><a href="#malak">Malak Halabi</a><a href="#dana">Dana Abazid</a><a href="#marwan">Marwan Yahya</a><a href="#ahmed">Ahmed Ali Salmeen</a><a href="#youssef">Youssef Al Hosni</a><a href="#roua">Roua Mohamed</a><a href="#amna-a">Amna Abdelfattah</a><a href="#hebba">Hebba Aljunaibi Alsoori</a><a href="#alaa">Alaa Al Habach</a><a href="#ali">Ali Nayef</a><a href="#amna-al">Amna Alameri</a><a href="#zayed">Zayed Aljaberi</a></div></nav>
+
+<main class="wrap">
+<section class="char" id="nasser">
+<header class="ch"><span class="idx">01</span><div><h2>Nasser Nayef</h2><p class="tag">Kandura meets street</p></div></header>
+<div class="body"><aside class="notes">
+<div class="blk"><h4 class="c-ward">Wardrobe</h4><ul><li>White kandura and taqiyah under an oversized burgundy varsity jacket, chunky retro sneakers</li><li>Boxy white graphic tee, cream pleated trousers, backwards cap</li><li>Dusty-blue bucket cap, oversized cream tee, olive cargo shorts, white tube socks</li></ul></div>
+<div class="blk"><h4 class="c-loc">Locations</h4><ul class="chips"><li>Old baqala</li><li>Fashion gallery</li><li>Umm Al Emarat Park</li><li>Qasr Al Hosn</li></ul></div>
+<div class="blk"><h4 class="c-prop">Props</h4><ul class="chips"><li>Spray paint</li><li>Checkered shopping bag</li></ul></div>
+</aside><div class="grid"><figure><img src="img/00.jpg" alt="Nasser Nayef: Baqala, flash" loading="lazy"><figcaption><span>01.1</span> Baqala, flash</figcaption></figure><figure><img src="img/01.jpg" alt="Nasser Nayef: Gallery, spray tag" loading="lazy"><figcaption><span>01.2</span> Gallery, spray tag</figcaption></figure><figure><img src="img/02.jpg" alt="Nasser Nayef: Park, golden hour" loading="lazy"><figcaption><span>01.3</span> Park, golden hour</figcaption></figure><figure><img src="img/03.jpg" alt="Nasser Nayef: Qasr Al Hosn walls" loading="lazy"><figcaption><span>01.4</span> Qasr Al Hosn walls</figcaption></figure></div></div></section>
+<section class="char" id="malak">
+<header class="ch"><span class="idx">02</span><div><h2>Malak Halabi</h2><p class="tag">Florist in denim</p></div></header>
+<div class="body"><aside class="notes">
+<div class="blk"><h4 class="c-ward">Wardrobe</h4><ul><li>Cream hijab, oversized vintage denim jacket over a long floral maxi dress, oversized sunglasses</li><li>Pastel pink hijab, mustard knit cardigan, wide-leg pleated trousers</li></ul></div>
+<div class="blk"><h4 class="c-loc">Locations</h4><ul class="chips"><li>Flower shop</li><li>Outdoor Abu Dhabi, Corniche</li></ul></div>
+<div class="blk"><h4 class="c-prop">Props</h4><ul class="chips"><li>Flowers</li><li>Arabic newspaper wrap</li></ul></div>
+</aside><div class="grid"><figure><img src="img/04.jpg" alt="Malak Halabi: Flower shop doorway" loading="lazy"><figcaption><span>02.1</span> Flower shop doorway</figcaption></figure><figure><img src="img/05.jpg" alt="Malak Halabi: Low-angle with friends" loading="lazy"><figcaption><span>02.2</span> Low-angle with friends</figcaption></figure><figure><img src="img/06.jpg" alt="Malak Halabi: Corniche, motion blur" loading="lazy"><figcaption><span>02.3</span> Corniche, motion blur</figcaption></figure><figure><img src="img/07.jpg" alt="Malak Halabi: Gerberas in newspaper" loading="lazy"><figcaption><span>02.4</span> Gerberas in newspaper</figcaption></figure></div></div></section>
+<section class="char" id="dana">
+<header class="ch"><span class="idx">03</span><div><h2>Dana Abazid</h2><p class="tag">Bookish heritage</p></div></header>
+<div class="body"><aside class="notes">
+<div class="blk"><h4 class="c-ward">Wardrobe</h4><ul><li>Crisp white oversized shirt, black tailored waistcoat, wide black trousers</li><li>Flowing cream linen dress for the bakery</li><li>Retro sunglasses as the one modern note</li></ul></div>
+<div class="blk"><h4 class="c-loc">Locations</h4><ul class="chips"><li>Traditional Arabic bookshop</li><li>Traditional bakery</li><li>Cultural landmarks</li></ul></div>
+<div class="blk"><h4 class="c-prop">Props</h4><ul class="chips"><li>Carrom &amp; backgammon</li><li>Carpets</li><li>Book</li></ul></div>
+</aside><div class="grid"><figure><img src="img/08.jpg" alt="Dana Abazid: Bookshop stacks" loading="lazy"><figcaption><span>03.1</span> Bookshop stacks</figcaption></figure><figure><img src="img/09.jpg" alt="Dana Abazid: Tannour oven" loading="lazy"><figcaption><span>03.2</span> Tannour oven</figcaption></figure><figure><img src="img/10.jpg" alt="Dana Abazid: Carrom, overhead" loading="lazy"><figcaption><span>03.3</span> Carrom, overhead</figcaption></figure><figure><img src="img/11.jpg" alt="Dana Abazid: Backgammon courtyard" loading="lazy"><figcaption><span>03.4</span> Backgammon courtyard</figcaption></figure></div></div></section>
+<section class="char" id="marwan">
+<header class="ch"><span class="idx">04</span><div><h2>Marwan Yahya</h2><p class="tag">Café regular</p></div></header>
+<div class="body"><aside class="notes">
+<div class="blk"><h4 class="c-ward">Wardrobe</h4><ul><li>Black bucket hat, cream knit short-sleeve polo, brown pleated trousers, loafers</li><li>Vintage black track jacket, cream tee, loose grey trousers</li><li>Oversized black bomber, white tee, wide black trousers for the street video</li></ul></div>
+<div class="blk"><h4 class="c-loc">Locations</h4><ul class="chips"><li>Old Arabic café</li><li>Cultural landmarks</li></ul></div>
+<div class="blk"><h4 class="c-prop">Props</h4><ul class="chips"><li>Arabic games &amp; carpets</li><li>Vintage photographs</li><li>Arabic newspaper</li></ul></div>
+<div class="blk"><h4 class="c-cast">Additional cast</h4><p>Senior Arab men</p></div></aside><div class="grid"><figure><img src="img/12.jpg" alt="Marwan Yahya: Café with seniors" loading="lazy"><figcaption><span>04.1</span> Café with seniors</figcaption></figure><figure><img src="img/13.jpg" alt="Marwan Yahya: Café interior, attitude" loading="lazy"><figcaption><span>04.2</span> Café interior, attitude</figcaption></figure><figure><img src="img/14.jpg" alt="Marwan Yahya: Backgammon with elder" loading="lazy"><figcaption><span>04.3</span> Backgammon with elder</figcaption></figure><figure><img src="img/15.jpg" alt="Marwan Yahya: Camcorder street still" loading="lazy"><figcaption><span>04.4</span> Camcorder street still</figcaption></figure></div></div></section>
+<section class="char" id="ahmed">
+<header class="ch"><span class="idx">05</span><div><h2>Ahmed Ali Salmeen</h2><p class="tag">Classic kandura, tinted lens</p></div></header>
+<div class="body"><aside class="notes">
+<div class="blk"><h4 class="c-ward">Wardrobe</h4><ul><li>Pristine white kandura and ghutra, gold-rimmed tinted aviators, vintage leather-strap watch</li><li>Same base worn through every setup so the props carry the story</li></ul></div>
+<div class="blk"><h4 class="c-loc">Locations</h4><ul class="chips"><li>Cultural landmarks</li><li>City streets &amp; cafés</li></ul></div>
+<div class="blk"><h4 class="c-prop">Props</h4><ul class="chips"><li>Arabic newspaper</li><li>Vintage photographs</li><li>Carrom &amp; carpets</li></ul></div>
+<div class="blk"><h4 class="c-cast">Additional cast</h4><p>Senior Arab men</p></div></aside><div class="grid"><figure><img src="img/16.jpg" alt="Ahmed Ali Salmeen: Newspaper under palm" loading="lazy"><figcaption><span>05.1</span> Newspaper under palm</figcaption></figure><figure><img src="img/17.jpg" alt="Ahmed Ali Salmeen: Family photos detail" loading="lazy"><figcaption><span>05.2</span> Family photos detail</figcaption></figure><figure><img src="img/18.jpg" alt="Ahmed Ali Salmeen: Carrom, overhead" loading="lazy"><figcaption><span>05.3</span> Carrom, overhead</figcaption></figure><figure><img src="img/19.jpg" alt="Ahmed Ali Salmeen: Sunset café" loading="lazy"><figcaption><span>05.4</span> Sunset café</figcaption></figure></div></div></section>
+<section class="char" id="youssef">
+<header class="ch"><span class="idx">06</span><div><h2>Youssef Al Hosni</h2><p class="tag">Court to car bonnet</p></div></header>
+<div class="body"><aside class="notes">
+<div class="blk"><h4 class="c-ward">Wardrobe</h4><ul><li>Oversized white mesh basketball jersey over grey tee, retro shorts, tube socks, high-tops</li><li>Oversized beige 1970s double-breasted suit, open-collar shirt, black loafers</li><li>Camo overshirt over a jersey for the baqala</li></ul></div>
+<div class="blk"><h4 class="c-loc">Locations</h4><ul class="chips"><li>Painted basketball court</li><li>Landmarks with vintage car</li><li>Camera scenario, streets</li><li>Old baqala</li></ul></div>
+<div class="blk"><h4 class="c-prop">Props</h4><ul class="chips"><li>Vintage car</li><li>Polaroid / camcorder</li><li>Basketball</li></ul></div>
+</aside><div class="grid"><figure><img src="img/20.jpg" alt="Youssef Al Hosni: Court, ball spin" loading="lazy"><figcaption><span>06.1</span> Court, ball spin</figcaption></figure><figure><img src="img/21.jpg" alt="Youssef Al Hosni: Vintage red sedan" loading="lazy"><figcaption><span>06.2</span> Vintage red sedan</figcaption></figure><figure><img src="img/22.jpg" alt="Youssef Al Hosni: Camcorder to lens" loading="lazy"><figcaption><span>06.3</span> Camcorder to lens</figcaption></figure><figure><img src="img/23.jpg" alt="Youssef Al Hosni: Baqala fisheye" loading="lazy"><figcaption><span>06.4</span> Baqala fisheye</figcaption></figure></div></div></section>
+<section class="char" id="roua">
+<header class="ch"><span class="idx">07</span><div><h2>Roua Mohamed</h2><p class="tag">Jersey and gold</p></div></header>
+<div class="body"><aside class="notes">
+<div class="blk"><h4 class="c-ward">Wardrobe</h4><ul><li>Oversized black vintage basketball jersey over white tee, stacked Emirati gold rings and bangles</li><li>White puff-sleeve blouse, braids dressed with traditional gold hair ornaments</li><li>Yellow ribbed 70s knit with gold rings</li></ul></div>
+<div class="blk"><h4 class="c-loc">Locations</h4><ul class="chips"><li>Basketball court</li><li>Streets &amp; park</li></ul></div>
+<div class="blk"><h4 class="c-prop">Props</h4><ul class="chips"><li>Polaroid camera</li><li>Basketball</li><li>Emirati traditional accessories</li></ul></div>
+</aside><div class="grid"><figure><img src="img/24.jpg" alt="Roua Mohamed: Court at sunset" loading="lazy"><figcaption><span>07.1</span> Court at sunset</figcaption></figure><figure><img src="img/25.jpg" alt="Roua Mohamed: Braids with gold" loading="lazy"><figcaption><span>07.2</span> Braids with gold</figcaption></figure><figure><img src="img/26.jpg" alt="Roua Mohamed: Polaroid, yellow wall" loading="lazy"><figcaption><span>07.3</span> Polaroid, yellow wall</figcaption></figure><figure><img src="img/27.jpg" alt="Roua Mohamed: Park close-up" loading="lazy"><figcaption><span>07.4</span> Park close-up</figcaption></figure></div></div></section>
+<section class="char" id="amna-a">
+<header class="ch"><span class="idx">08</span><div><h2>Amna Abdelfattah</h2><p class="tag">Hoops with henna</p></div></header>
+<div class="body"><aside class="notes">
+<div class="blk"><h4 class="c-ward">Wardrobe</h4><ul><li>Boxy white tee over long sleeve, camo bucket hat</li><li>Dark green vintage jersey, henna, layered gold rings, turquoise bangles, sheer gold-embroidered shawl</li><li>Oversized cream basketball tee, light-wash wide jeans, green bucket hat</li></ul></div>
+<div class="blk"><h4 class="c-loc">Locations</h4><ul class="chips"><li>Basketball court</li><li>Umm Al Emarat Park</li><li>Fashion gallery</li><li>Cultural landmarks</li></ul></div>
+<div class="blk"><h4 class="c-prop">Props</h4><ul class="chips"><li>Basketball</li><li>Bike</li><li>Spray paint</li></ul></div>
+</aside><div class="grid"><figure><img src="img/28.jpg" alt="Amna Abdelfattah: Night court, flash" loading="lazy"><figcaption><span>08.1</span> Night court, flash</figcaption></figure><figure><img src="img/29.jpg" alt="Amna Abdelfattah: Henna &amp; ball detail" loading="lazy"><figcaption><span>08.2</span> Henna &amp; ball detail</figcaption></figure><figure><img src="img/30.jpg" alt="Amna Abdelfattah: Park bike ride" loading="lazy"><figcaption><span>08.3</span> Park bike ride</figcaption></figure><figure><img src="img/31.jpg" alt="Amna Abdelfattah: Gallery stencil" loading="lazy"><figcaption><span>08.4</span> Gallery stencil</figcaption></figure></div></div></section>
+<section class="char" id="hebba">
+<header class="ch"><span class="idx">09</span><div><h2>Hebba Aljunaibi Alsoori</h2><p class="tag">Plaid and market bags</p></div></header>
+<div class="body"><aside class="notes">
+<div class="blk"><h4 class="c-ward">Wardrobe</h4><ul><li>Black hijab, oversized red-and-green plaid wool blazer, white tee, straight-leg jeans</li><li>Taupe hijab, cream knit vest, white shirt, long pleated olive skirt</li><li>White cap worn over the hijab for the baqala</li></ul></div>
+<div class="blk"><h4 class="c-loc">Locations</h4><ul class="chips"><li>Cultural landmarks</li><li>Streets, markets &amp; cafés</li></ul></div>
+<div class="blk"><h4 class="c-prop">Props</h4><ul class="chips"><li>Bike</li><li>Striped woven shopping bag</li></ul></div>
+</aside><div class="grid"><figure><img src="img/32.jpg" alt="Hebba Aljunaibi Alsoori: Bikes at the crossing" loading="lazy"><figcaption><span>09.1</span> Bikes at the crossing</figcaption></figure><figure><img src="img/33.jpg" alt="Hebba Aljunaibi Alsoori: Vegetable market" loading="lazy"><figcaption><span>09.2</span> Vegetable market</figcaption></figure><figure><img src="img/34.jpg" alt="Hebba Aljunaibi Alsoori: Baqala fisheye" loading="lazy"><figcaption><span>09.3</span> Baqala fisheye</figcaption></figure><figure><img src="img/35.jpg" alt="Hebba Aljunaibi Alsoori: Old-street café" loading="lazy"><figcaption><span>09.4</span> Old-street café</figcaption></figure></div></div></section>
+<section class="char" id="alaa">
+<header class="ch"><span class="idx">10</span><div><h2>Alaa Al Habach &amp; family</h2><p class="tag">Picnic palette</p></div></header>
+<div class="body"><aside class="notes">
+<div class="blk"><h4 class="c-ward">Wardrobe</h4><ul><li>Rust-orange linen shirt, pastel pink wide trousers; kids in bright retro colours and sun hats</li><li>All-black outfit and loafers for the gallery</li></ul></div>
+<div class="blk"><h4 class="c-loc">Locations</h4><ul class="chips"><li>Umm Al Emarat Park</li><li>Art gallery</li></ul></div>
+<div class="blk"><h4 class="c-prop">Props</h4><ul class="chips"><li>Children&#x27;s book</li><li>Picnic set</li><li>Painting</li><li>Polaroid camera</li></ul></div>
+</aside><div class="grid"><figure><img src="img/36.jpg" alt="Alaa Al Habach &amp; family: Picnic blanket" loading="lazy"><figcaption><span>10.1</span> Picnic blanket</figcaption></figure><figure><img src="img/37.jpg" alt="Alaa Al Habach &amp; family: Story time on bench" loading="lazy"><figcaption><span>10.2</span> Story time on bench</figcaption></figure><figure><img src="img/38.jpg" alt="Alaa Al Habach &amp; family: Gallery chair" loading="lazy"><figcaption><span>10.3</span> Gallery chair</figcaption></figure><figure><img src="img/39.jpg" alt="Alaa Al Habach &amp; family: Toddler in the sky" loading="lazy"><figcaption><span>10.4</span> Toddler in the sky</figcaption></figure></div></div></section>
+<section class="char" id="ali">
+<header class="ch"><span class="idx">11</span><div><h2>Ali Nayef</h2><p class="tag">Crate digger</p></div></header>
+<div class="body"><aside class="notes">
+<div class="blk"><h4 class="c-ward">Wardrobe</h4><ul><li>Oversized cream boxy tee, loose olive trousers, white sneakers</li><li>Cream tee with a large retro graphic back print</li><li>Bright orange oversized hoodie</li><li>Black sleeveless tee, backwards cap</li></ul></div>
+<div class="blk"><h4 class="c-loc">Locations</h4><ul class="chips"><li>Streets &amp; cafés</li><li>Vinyl record shop</li><li>Fruit market truck</li></ul></div>
+<div class="blk"><h4 class="c-prop">Props</h4><ul class="chips"><li>Polaroid / film camera</li><li>Spray paint</li><li>Basketball</li></ul></div>
+</aside><div class="grid"><figure><img src="img/40.jpg" alt="Ali Nayef: Watermelon truck" loading="lazy"><figcaption><span>11.1</span> Watermelon truck</figcaption></figure><figure><img src="img/41.jpg" alt="Ali Nayef: Record crates" loading="lazy"><figcaption><span>11.2</span> Record crates</figcaption></figure><figure><img src="img/42.jpg" alt="Ali Nayef: Fisheye, film camera" loading="lazy"><figcaption><span>11.3</span> Fisheye, film camera</figcaption></figure><figure><img src="img/43.jpg" alt="Ali Nayef: Street tagging" loading="lazy"><figcaption><span>11.4</span> Street tagging</figcaption></figure></div></div></section>
+<section class="char" id="amna-al">
+<header class="ch"><span class="idx">12</span><div><h2>Amna Alameri</h2><p class="tag">Falcon and fringe</p></div></header>
+<div class="body"><aside class="notes">
+<div class="blk"><h4 class="c-ward">Wardrobe</h4><ul><li>Chocolate silk hijab, brown suede fringed jacket over a long cream dress, falconry glove</li><li>Black abaya worn open over a floral dress, black shayla, retro sunglasses, wooden box bag</li></ul></div>
+<div class="blk"><h4 class="c-loc">Locations</h4><ul class="chips"><li>Traditional bookshop &amp; shop</li><li>Old Abu Dhabi</li><li>Stable</li></ul></div>
+<div class="blk"><h4 class="c-prop">Props</h4><ul class="chips"><li>Books</li><li>Falcon</li><li>Horse</li></ul></div>
+</aside><div class="grid"><figure><img src="img/44.jpg" alt="Amna Alameri: Falcon at the fort" loading="lazy"><figcaption><span>12.1</span> Falcon at the fort</figcaption></figure><figure><img src="img/45.jpg" alt="Amna Alameri: Bookshop entrance" loading="lazy"><figcaption><span>12.2</span> Bookshop entrance</figcaption></figure><figure><img src="img/46.jpg" alt="Amna Alameri: Forehead to horse" loading="lazy"><figcaption><span>12.3</span> Forehead to horse</figcaption></figure><figure><img src="img/47.jpg" alt="Amna Alameri: Old-city steps" loading="lazy"><figcaption><span>12.4</span> Old-city steps</figcaption></figure></div></div></section>
+<section class="char" id="zayed">
+<header class="ch"><span class="idx">13</span><div><h2>Zayed Aljaberi</h2><p class="tag">Stable and majlis</p></div></header>
+<div class="body"><aside class="notes">
+<div class="blk"><h4 class="c-ward">Wardrobe</h4><ul><li>White kandura with ghutra wrapped turban-style, retro tinted sunglasses</li><li>Olive-green overshirt layered over the kandura</li></ul></div>
+<div class="blk"><h4 class="c-loc">Locations</h4><ul class="chips"><li>Cultural landmarks</li><li>Stable</li><li>Majlis</li></ul></div>
+<div class="blk"><h4 class="c-prop">Props</h4><ul class="chips"><li>Arabic games &amp; carpets</li><li>Horse</li><li>Falcon</li><li>Dallah &amp; finjan</li></ul></div>
+<div class="blk"><h4 class="c-cast">Additional cast</h4><p>Senior Arab men</p></div></aside><div class="grid"><figure><img src="img/48.jpg" alt="Zayed Aljaberi: Horse in the foreground" loading="lazy"><figcaption><span>13.1</span> Horse in the foreground</figcaption></figure><figure><img src="img/49.jpg" alt="Zayed Aljaberi: Stable silhouette" loading="lazy"><figcaption><span>13.2</span> Stable silhouette</figcaption></figure><figure><img src="img/50.jpg" alt="Zayed Aljaberi: Backgammon with elders" loading="lazy"><figcaption><span>13.3</span> Backgammon with elders</figcaption></figure><figure><img src="img/51.jpg" alt="Zayed Aljaberi: Gahwa with falcon" loading="lazy"><figcaption><span>13.4</span> Gahwa with falcon</figcaption></figure></div></div></section>
+</main>
+
+<footer class="wrap"><span>Arabian Days 2026 · Main shoot · Styling references</span><span>AI-generated references for wardrobe direction, not talent likeness</span></footer>
+
+</body>
+</html>
